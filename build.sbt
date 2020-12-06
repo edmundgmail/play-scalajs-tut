@@ -19,8 +19,11 @@ lazy val client = (project in file("client"))
   .settings(commonSettings)
   .settings(
     scalaJSUseMainModuleInitializer := true,
+    scalacOptions += "-Ymacro-annotations",
     libraryDependencies ++= Seq(
-      "org.scala-js" %%% "scalajs-dom" % "1.1.0"
+      "org.scala-js" %%% "scalajs-dom" % "1.1.0",
+      "me.shadaj" %%% "slinky-core" % "0.6.6", // core React functionality, no React DOM
+      "me.shadaj" %%% "slinky-web" % "0.6.6" // React DOM, HTML and SVG tags
     )
   )
   .enablePlugins(ScalaJSPlugin, ScalaJSWeb)
